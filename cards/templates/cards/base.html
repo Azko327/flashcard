@@ -1,0 +1,104 @@
+<!-- cards/templates/cards/base.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Flashcards</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+</head>
+
+<style>
+
+header {
+    position: relative; 
+}
+
+.success-message {
+    position: absolute;
+    top: 75%; 
+    left: 50%; 
+    transform: translateX(-50%); 
+    background-color: #dff0d8; 
+    padding: 10px; 
+    border: 1px solid #d6e9c6; 
+    border-radius: 4px;
+}
+
+    :root {
+        --accent: #6e48ad;
+        --accent-bg: white;
+        --bg: #fff;
+        --text: #212121;
+        --text-light: #585858;
+        --border: #d8dae1;
+        --code: #d81b60;
+        --preformatted: #444;
+    }
+
+    article {
+        background-color: var(--marked);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+        padding: 1em;
+        margin: 1em 0;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    h2, h4 {
+        margin-top: 0;
+    }
+
+    hr {
+        background: var(--accent);
+        border-color: var(--accent);
+    }
+
+    button,
+    a[role="button"] {
+        color: rgb(255, 255, 255);
+        text-decoration: none;
+        background-color: #6e48ad;
+    }
+
+    input, select, textarea {
+        width: 100%;
+    }
+    .progress-bar-container {
+        width: 100%;
+        background-color: #e0e0e0;
+        border-radius: 8px;
+        margin: 20px 0;
+    }
+
+    .progress-bar {
+        height: 20px;
+        background-color: #4CAF50;
+        border-radius: 8px;
+    }
+
+</style>
+
+<body>
+    <header>
+        <h1>Flashcards App</h1>
+        {% include "cards/navigation.html" %}
+        {% if messages %}
+            <div class="success-message">
+                {% for message in messages %}
+                    <p{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</p>
+                {% endfor %}
+            </div>
+        {% endif %}      
+    </header>
+    <main>   
+        {% block content %}
+            <h2>Welcome to your Flashcards app!</h2>
+        {% endblock content %}     
+    </main>
+</body>
+
+</html>
